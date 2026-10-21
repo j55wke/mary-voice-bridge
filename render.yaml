@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: mary-voice-bridge
+    runtime: node
+    region: frankfurt
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: FLOOT_BASE_URL
+        sync: false
+      - key: MARY_BRIDGE_SECRET
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: PUBLIC_WSS_URL
+        sync: false
